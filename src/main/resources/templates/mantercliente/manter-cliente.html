@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Compasso</title>
+</head>
+
+<body>
+<div class="mx-auto" style="width: 1100px;"> 
+<h1> Manter Cliente </h1>
+
+</br>
+
+<form action="#" th:action="@{/pesquisarCliente}" th:object="${cliente}" method="post">
+<h4>Pesquisar Cliente</h4> 
+<div class="form-group">
+ 	<label>Id</label>
+	<input type="text" class="form-control" th:field="*{id}" name="id">
+</div>
+
+ <div class="form-group">
+	<label>Nome</label>
+ 	<input type="text" class="form-control" th:field="*{nome}" name="nome">
+</div>
+
+<div>
+  <td><a th:href="@{/listarClientes}" class="btn btn-outline-primary">Listar Todos os Clientes</a></td>
+  <button type="submit" class="btn btn-outline-primary">Filtrar Cliente</button>
+  <td><a th:href="@{/incluirCliente}" class="btn btn-outline-primary">Incluir Cliente</a></td>
+  <button type="button" onclick="history.back();" class="btn btn-outline-primary">Voltar</button>
+</div>
+
+</form>
+
+</br>
+<div>
+<table class="table table-striped">
+	 <tr>
+	     <th>Id</th>
+	     <th>Nome</th>
+	     <th>Sobre Nome</th>
+	     <th>Sexo</th>
+	     <th>Data de Nascimento</th>
+	     <th>Idade</th>
+	     <th>Cidade</th>
+	     <th>Estado</th>
+	     <th></th>
+	     <th></th>
+	 </tr>
+      <tr th:each="cli : ${listaClientes}">
+      	   <td th:text="${cli.id}"></td>
+           <td th:text="${cli.nome}"></td>
+           <td th:text="${cli.sobreNome}"></td>
+           <td th:text="${cli.sexo}"></td>
+           <td th:text="${cli.dtNascimento}"></td>
+           <td th:text="${cli.idade}"></td>
+           <td th:text="${cli.cidade.nome}"></td>
+           <td th:text="${cli.cidade.estado}"></td>
+           <td><a th:href="@{/editarCliente/{id}(id=${cli.id})}" class="btn btn-info">Alterar</a></td>
+           <td><a th:href="@{/excluirCliente/{id}(id=${cli.id})}" class="btn btn-danger">Excluir</a></td>
+       </tr> 
+ </table>
+</div>
+</body>
+</html>

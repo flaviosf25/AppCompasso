@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Compasso</title>
+</head>
+
+<body>
+<div class="mx-auto" style="width: 1100px;">
+
+<form action="#" th:action="@{/pesquisarCidade}" th:object="${cidade}" method="post">
+<h1>Consultar Cidade</h1> 
+<div class="form-group">
+ 	<label>Nome</label>
+	<input type="text" class="form-control" th:field="*{nome}" name="nome">
+</div>
+
+ <div class="form-group">
+<label for="estado">Estado:</label>
+ <select th:field="*{estado}" name="estado" class="form-control">
+	<option value="">Selecione um Estado</option>
+	<option value="AC">Acre</option>
+	<option value="AL">Alagoas</option>
+	<option value="AP">Amapá</option>
+	<option value="AM">Amazonas</option>
+	<option value="BA">Bahia</option>
+	<option value="CE">Ceará</option>
+	<option value="DF">Distrito Federal</option>
+	<option value="ES">Espírito Santo</option>
+	<option value="GO">Goiás</option>
+	<option value="MA">Maranhão</option>
+	<option value="MT">Mato Grosso</option>
+	<option value="MS">Mato Grosso do Sul</option>
+	<option value="MG">Minas Gerais</option>
+	<option value="PA">Pará</option>
+	<option value="PB">Paraíba</option>
+	<option value="PR">Paraná</option>
+	<option value="PE">Pernambuco</option>
+	<option value="PI">Piauí</option>
+	<option value="RJ">Rio de Janeiro</option>
+	<option value="RN">Rio Grande do Norte</option>
+	<option value="RS">Rio Grande do Sul</option>
+	<option value="RO">Rondônia</option>
+	<option value="RR">Roraima</option>
+	<option value="SC">Santa Catarina</option>
+	<option value="SP">São Paulo</option>
+	<option value="SE">Sergipe</option>
+	<option value="TO">Tocantins</option>
+</select>
+</div>
+
+<div>
+  <td><a th:href="@{/listarCidades}" class="btn btn-outline-primary">Listar Todas as Cidades</a></td>
+  <button type="submit" class="btn btn-outline-primary">Filtrar Cidade</button>
+  <td><a th:href="@{/incluirCidade}" class="btn btn-outline-primary">Incluir Cidade</a></td>
+  <button type="button" onclick="history.back();" class="btn btn-outline-primary">Voltar</button>
+</div>
+</form>
+</br>
+
+<table class="table table-striped">
+	 <tr>
+	     <th>Nome</th>
+	     <th>Estado</th>
+	     <th></th>
+	 </tr>
+      <tr th:each="cid : ${listaCidades}">
+           <td th:text="${cid.nome}"></td>
+           <td th:text="${cid.estado}"></td>
+           <td><a th:href="@{/excluirCidade/{id}(id=${cid.id})}" class="btn btn-danger">Excluir</a></td>
+       </tr> 
+ </table>
+
+</div>
+</body>
+</html>

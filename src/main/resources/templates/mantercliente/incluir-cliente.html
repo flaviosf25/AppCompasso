@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Compasso</title>
+</head>
+
+<body>
+<div class="mx-auto" style="width: 1100px;"> 
+<h1> Cadastrar Cliente </h1>
+
+<form action="#" th:action="@{/salvarCliente}" th:object="${cliente}" method="post" >
+<div class="form-group">
+	<label>Nome</label>
+	<input type="text" class="form-control" th:field="*{nome}" name="nome" required>
+</div>
+
+<div class="form-group">	
+	<label>Sobre Nome</label>
+	<input type="text" class="form-control" th:field="*{sobreNome}" name="sobreNome" required>
+</div>
+
+<div class="form-group">
+    Masculino <input type="radio" th:field="*{sexo}" name="sexo" value="Masculino" required>
+	Feminino <input type="radio" th:field="*{sexo}" name="sexo" value="Feminino" required>
+</div>
+
+ <div class="form-group">
+    <label for="dtNascimento">Data de Nascimento:</label>
+    <input type="date" class="form-control" th:field="*{dtNascimento}" name="dtNascimento" required>
+</div>
+
+<div class="form-group">	
+	<label>Idade</label>
+	<input type="text" class="form-control" th:field="*{idade}" name="idade" required>
+</div>
+	
+<div class="form-group">
+<label for="cidade.estado">Estado:</label>
+ <select th:field="*{cidade.estado}" name="cidade.estado" class="form-control" required>
+	<option value="">Selecione um Estado</option>
+	<option value="AC">Acre</option>
+	<option value="AL">Alagoas</option>
+	<option value="AP">Amapá</option>
+	<option value="AM">Amazonas</option>
+	<option value="BA">Bahia</option>
+	<option value="CE">Ceará</option>
+	<option value="DF">Distrito Federal</option>
+	<option value="ES">Espírito Santo</option>
+	<option value="GO">Goiás</option>
+	<option value="MA">Maranhão</option>
+	<option value="MT">Mato Grosso</option>
+	<option value="MS">Mato Grosso do Sul</option>
+	<option value="MG">Minas Gerais</option>
+	<option value="PA">Pará</option>
+	<option value="PB">Paraíba</option>
+	<option value="PR">Paraná</option>
+	<option value="PE">Pernambuco</option>
+	<option value="PI">Piauí</option>
+	<option value="RJ">Rio de Janeiro</option>
+	<option value="RN">Rio Grande do Norte</option>
+	<option value="RS">Rio Grande do Sul</option>
+	<option value="RO">Rondônia</option>
+	<option value="RR">Roraima</option>
+	<option value="SC">Santa Catarina</option>
+	<option value="SP">São Paulo</option>
+	<option value="SE">Sergipe</option>
+	<option value="TO">Tocantins</option>
+</select>
+</div>
+
+<div class="form-group">
+	<label>Cidade</label>
+	<input type="text" class="form-control" th:field="*{cidade.nome}" name="cidade" required>
+</div>
+
+<div>
+  <button type="submit" class="btn btn-outline-primary">Salvar</button>
+  <button type="button" onclick="history.back();" class="btn btn-outline-primary">Voltar</button>
+</div>
+
+</br>
+</br>
+</br>
+
+</form>
+
+</div>
+
+</body>
+</html>
